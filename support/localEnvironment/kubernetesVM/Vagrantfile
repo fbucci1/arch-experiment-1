@@ -1,0 +1,50 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true
+  config.vm.provider "virtualbox" do |vb|
+     vb.memory = 8192
+     vb.cpus = 2
+     vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
+  end
+  config.vm.provision "shell", inline: <<-EOF
+    echo "-------------- Now comes the good part! ---------------------------------------"
+  EOF
+
+  config.vm.define "microk8s_dev" do |microk8s_dev|
+    microk8s_dev.vm.hostname = "microk8s-dev"
+    microk8s_dev.vm.provider "virtualbox" do |vb|
+      vb.name = "microk8s-dev"
+    end
+    microk8s_dev.vm.network "forwarded_port", guest: 20000, host: 10000, auto_correct: true
+    microk8s_dev.vm.network "forwarded_port", guest: 20001, host: 10001, auto_correct: true
+    microk8s_dev.vm.network "forwarded_port", guest: 20002, host: 10002, auto_correct: true
+    microk8s_dev.vm.network "forwarded_port", guest: 20003, host: 10003, auto_correct: true
+    microk8s_dev.vm.network "forwarded_port", guest: 20004, host: 10004, auto_correct: true
+    microk8s_dev.vm.provision "shell", inline: <<-EOF
+      echo "-------------- Initializing  ------------------------------------------------"
+      echo "-------------- Installing MicroK8s ------------------------------------------"
+      snap install microk8s --classic
+      echo "-------------- Installing Docker --------------------------------------------"
+      snap install docker
+      echo "-------------- Setting up microK8s and enabling services --------------------"
+      microk8s.status --wait-ready
+      microk8s.enable dns dashboard registry helm3
+      microk8s.status --wait-ready
+      echo "-------------- Setting up permissions for vagrant user ----------------------"
+      usermod -a -G microk8s vagrant
+      newgrp microk8s
+      echo "-------------- Moving .kube folder to vagrant user --------------------------"
+      mv ~/.kube /home/vagrant/.kube
+      chown -f -R vagrant:vagrant /home/vagrant/.kube
+      echo "-------------- Defining aliases for vagrant user ----------------------------"
+      echo "alias kubectl='microk8s.kubectl'" >> /home/vagrant/.bash_aliases
+      echo "alias helm='microk8s.helm3'" >> /home/vagrant/.bash_aliases
+      chown vagrant:vagrant /home/vagrant/.bash_aliases
+      source /home/vagrant/.bash_aliases
+      echo "-------------- Enabling dashboard -------------------------------------------"
+      microk8s kubectl port-forward -n kube-system service/kubernetes-dashboard 20000:443 &
+      echo "-------------- We should be ready now ---------------------------------------"
+    EOF
+  end
+
+end
