@@ -1,6 +1,8 @@
 #!/bin/bash
 ts0=$(date +%s%N)
-echo "Ensuring Kubernetes VM is created, up and then connect to it via SSH"
+echo "Sit comfortably while I re-create Kubernetes VM for you"
+
+vagrant destroy -f
 
 vagrant up
 
