@@ -18,6 +18,7 @@ do
                 echo "Installing $FSERVICE"
                 /home/vagrant/resources/shared/installService.sh $FSERVICE
             elif [[ "$FEXPECTED" == "not-installed" ]]
+            then
                 #Ensure it is NOT installed
                 echo "Uninstalling $FSERVICE"
                 /home/vagrant/resources/shared/uninstallService.sh $FSERVICE
