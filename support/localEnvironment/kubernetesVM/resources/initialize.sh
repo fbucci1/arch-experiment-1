@@ -8,10 +8,13 @@ snap install docker
 echo "-------------- Starting microK8s --------------------------------------------"
 microk8s.status --wait-ready
 echo "-------------- Enabling microK8s services: Dashboard-------------------------"
-microk8s.enable dns registry dashboard helm3
+microk8s.enable dns registry helm3
+microk8s.enable dashboard &
 echo "-------------- Enabling microK8s services: Portainer ------------------------"
 microk8s.enable community
-microk8s.enable portainer
+microk8s.enable portainer &
+echo "-------------- Enabling microK8s services: Prometheus ------------------------"
+microk8s.enable prometheus &
 echo "-------------- Setting up permissions for vagrant user ----------------------"
 usermod -a -G microk8s vagrant
 newgrp microk8s

@@ -34,19 +34,20 @@ cd $ROOTFOLDERsupport/localEnvironment/kubernetesVM
 ### Check resources
 
 Now, you should be able to view the following resources using a browser in your PC:
-* [Dashboard](http://localhost:11000)
-* [Portainer](https://localhost:10000)
+* [Dashboard](https://localhost:10000)
+* [Grafana](http://localhost:10001)
+* [Portainer](http://localhost:11000)
 
 ### The VM is configured to forward the following ports:
 
 *VM Port forwarding for ClusterIP (requires kubectl port-forward)*
-* host: 10000, guest: 20000, Purpose: Portainer (HTTPS)
-* host: 10001, guest: 20001, Purpose: Available
+* host: 10000, guest: 20000, Purpose: Dashboard (HTTPS)
+* host: 10001, guest: 20001, Purpose: Grafana (HTTP)
 * host: 10002, guest: 20002, Purpose: Available
 * host: 10003, guest: 20003, Purpose: Available
 * host: 10004, guest: 20004, Purpose: Available
 *#VM Port forwarding for NodePorts (does not require kubectl port-forward)*
-* host: 11000, guest: 30777, Purpose: Dashboard (HTTP)
+* host: 11000, guest: 30777, Purpose: Portainer (HTTP)
 * host: 11001, guest: 30779, Purpose: Available
 
 ### Troubleshooting
