@@ -1,6 +1,6 @@
 #!/bin/bash
 ts0=$(date +%s%N)
-echo "Ensuring Kubernetes VM is created, up and then connect to it via SSH"
+echo "Ensuring Kubernetes VM is created, up and then connect to it via SSH. It is $(date +"%T")"
 
 vagrant up
 

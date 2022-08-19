@@ -1,6 +1,6 @@
 #!/bin/bash
 ts0=$(date +%s%N)
-echo "Sit comfortably while I re-create Kubernetes VM for you"
+echo "Sit comfortably while I re-create Kubernetes VM for you. It is $(date +"%T")"
 
 vagrant destroy -f
 

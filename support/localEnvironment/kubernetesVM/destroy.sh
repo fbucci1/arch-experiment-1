@@ -1,6 +1,6 @@
 #!/bin/bash
 ts0=$(date +%s%N)
-echo "About to destroy Kubernetes VM!"
+echo "About to destroy Kubernetes VM!. It is $(date +"%T")"
 
 vagrant destroy
 
