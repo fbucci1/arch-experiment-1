@@ -14,10 +14,6 @@ sudo tar -x -f $NAME.tar.gz
 rm $NAME.tar.gz
 sudo mv $NAME /opt/keycloak
 echo "-------------- Creating user and group"
-sudo groupadd keycloak
-sudo useradd -r -g keycloak -d /opt/keycloak -s /sbin/nologin keycloak
-sudo chown -R keycloak:keycloak /opt/keycloak
+sudo chown -R vagrant /opt/keycloak
 echo "-------------- Set up service"
 
-
-/opt/keycloak/bin/kc.sh start-dev
