@@ -2,7 +2,7 @@
 
 echo "-------------- Updating status to match the expected ---------------------------"
 
-cat expected-status.properties | while IFS=\= read -r FSERVICE FEXPECTED
+cat /home/vagrant/resources/expected-status.properties | while IFS=\= read -r FSERVICE FEXPECTED
 do
     # Trim values
     FSERVICE=`echo $FSERVICE`

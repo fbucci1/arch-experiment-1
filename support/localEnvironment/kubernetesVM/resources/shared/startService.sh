@@ -2,7 +2,7 @@
 
 SERVICE=$1
 
-if [ ! -f /home/vagrant/resources/$SERVICE/installed ]
+if [ ! -f "/home/vagrant/resources/$SERVICE/installed" ]
 then
     echo "============== Installing $SERVICE"
     /home/vagrant/resources/$SERVICE/install.sh

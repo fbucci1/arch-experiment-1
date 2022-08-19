@@ -2,7 +2,7 @@
 
 SERVICE=$1
 
-if [ ! -f /home/vagrant/resources/$SERVICE/installed ]
+if [ ! -f "/home/vagrant/resources/$SERVICE/installed" ]
 then
     echo "* Service $SERVICE was not installed."
     exit 0

@@ -2,14 +2,38 @@
 
 ## Install new services
 
-/home/vagrant/resources/microk8s-dashboard/install.sh
-/home/vagrant/resources/microk8s-portainer/install.sh
-/home/vagrant/resources/microk8s-prometheus/install.sh
+Edit the expected-status.properties file and set to true the services you want to be installed.
 
-## Uninstall services no longer needed
-
-/home/vagrant/resources/microk8s-dashboard/uninstall.sh
-/home/vagrant/resources/microk8s-portainer/uninstall.sh
-/home/vagrant/resources/microk8s-prometheus/uninstall.sh
+Then, run /home/vagrant/resoruces/update.sh
 
 
+## Uninstall new services
+
+Edit the expected-status.properties file and set to false the services you want to be uninstalled.
+
+Then, run /home/vagrant/resoruces/update.sh
+
+
+## Useful commands
+
+~/resources/shared/installService.sh microk8s
+~/resources/shared/startService.sh microk8s
+~/resources/shared/uninstallService.sh microk8s
+
+## Useful commands during development
+
+cd /home/vagrant/resoruces
+
+~/resources/copyFromVagrant.sh && ~/resources/update.sh
+
+~/resources/copyFromVagrant.sh && ~/resources/onSessionStart.sh
+
+SVC=microk8s
+~/resources/copyFromVagrant.sh && ~/resources/shared/installService.sh $SVC
+~/resources/copyFromVagrant.sh && ~/resources/shared/uninstallService.sh $SVC
+
+SVC=ansible
+~/resources/copyFromVagrant.sh && ~/resources/shared/uninstallService.sh $SVC && ~/resources/shared/installService.sh $SVC
+
+SVC=keycloak
+~/resources/copyFromVagrant.sh && ~/resources/shared/uninstallService.sh $SVC && ~/resources/shared/installService.sh $SVC
