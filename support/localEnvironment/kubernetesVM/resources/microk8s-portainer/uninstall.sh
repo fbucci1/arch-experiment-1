@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Not implemented yet."
+microk8s.disable portainer

@@ -9,10 +9,12 @@ echo "-------------- Downloading installer"
 URL=https://github.com/keycloak/keycloak/releases/download/19.0.1/keycloak-19.0.1.tar.gz
 NAME=keycloak-19.0.1
 curl -L -o $NAME.tar.gz $URL
-echo "-------------- Copying application to /opt folder"
+echo "-------------- Unzipping installer"
 sudo tar -x -f $NAME.tar.gz
 rm $NAME.tar.gz
-sudo mv $NAME /opt/keycloak
+echo "-------------- Copying application to /opt folder"
+sudo mkdir -p /opt/keycloak
+sudo mv $NAME/* /opt/keycloak
 echo "-------------- Creating user and group"
 sudo chown -R vagrant /opt/keycloak
 echo "-------------- Set up service"

@@ -6,8 +6,6 @@ echo "-------------- Installing Docker"
 sudo snap install docker
 echo "-------------- Starting microk8s"
 sudo microk8s.status --wait-ready
-echo "-------------- Enabling microk8s services"
-sudo microk8s.enable dns registry helm3
 echo "-------------- Defining shortcuts for commands"
 echo "alias kubectl='microk8s.kubectl'" >> /home/vagrant/.bash_aliases
 echo "alias helm='microk8s.helm3'" >> /home/vagrant/.bash_aliases

@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo "Not implemented yet."
+pkill -f "keycloak"
+pkill -f "kc.sh"
+sudo rm -rf /opt/keycloak
