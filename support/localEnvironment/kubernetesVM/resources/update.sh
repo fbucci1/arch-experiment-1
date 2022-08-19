@@ -12,16 +12,17 @@ do
     then
         if [[ ! -z "$FSERVICE" ]] # Not empty
         then
-            FEXPECTED=$( [ "$FEXPECTED" == "true" ] && echo "true" || echo "false" )
-            if [[ "$FEXPECTED" == "true" ]] # Not empty
+            if [[ "$FEXPECTED" == "installed" ]]
             then
                 #Ensure it is installed
                 echo "Installing $FSERVICE"
                 /home/vagrant/resources/shared/installService.sh $FSERVICE
-            else
+            elif [[ "$FEXPECTED" == "not-installed" ]]
                 #Ensure it is NOT installed
                 echo "Uninstalling $FSERVICE"
                 /home/vagrant/resources/shared/uninstallService.sh $FSERVICE
+            else
+                echo "Not touching $FSERVICE. Expected status: $FEXPECTED"
             fi
         fi
     fi

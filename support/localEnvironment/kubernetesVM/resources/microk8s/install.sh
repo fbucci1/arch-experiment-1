@@ -15,10 +15,7 @@ source /home/vagrant/.bash_aliases
 echo "-------------- Setting up permissions for vagrant user"
 sudo usermod -a -G microk8s vagrant
 echo "-------------- Moving .kube folder to vagrant user"
-if [ ! -d "/home/vagrant/.kube" ]
-then
-    mkdir /home/vagrant/.kube
-fi
+mkdir -p /home/vagrant/.kube
 sudo chown -f -R vagrant /home/vagrant/.kube
 echo "-------------- Reloading user"
 newgrp microk8s &

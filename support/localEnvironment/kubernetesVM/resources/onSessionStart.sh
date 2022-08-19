@@ -12,10 +12,8 @@ do
     then
         if [[ ! -z "$FSERVICE" ]] # Not empty
         then
-            FEXPECTED=$( [ "$FEXPECTED" == "true" ] && echo "true" || echo "false" )
-            if [[ "$FEXPECTED" == "true" ]] # Not empty
+            if [[ "$FEXPECTED" == "installed" ]]
             then
-                #echo "Starting $FSERVICE"
                 /home/vagrant/resources/shared/startService.sh $FSERVICE
             fi
         fi

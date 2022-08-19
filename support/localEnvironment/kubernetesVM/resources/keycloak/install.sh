@@ -1,7 +1,23 @@
 #!/bin/bash
 
 # See releases in https://github.com/keycloak/keycloak
+# Resources: https://www.altenburger.io/posts/install_keycloak/
 
-echo "Not implemented yet."
+echo "-------------- Install JDK"
+/home/vagrant/resources/shared/installService.sh jdk
+echo "-------------- Downloading installer"
+URL=https://github.com/keycloak/keycloak/releases/download/19.0.1/keycloak-19.0.1.tar.gz
+NAME=keycloak-19.0.1
+curl -L -o $NAME.tar.gz $URL
+echo "-------------- Copying application to /opt folder"
+sudo tar -x -f $NAME.tar.gz
+rm $NAME.tar.gz
+sudo mv $NAME /opt/keycloak
+echo "-------------- Creating user and group"
+sudo groupadd keycloak
+sudo useradd -r -g keycloak -d /opt/keycloak -s /sbin/nologin keycloak
+sudo chown -R keycloak:keycloak /opt/keycloak
+echo "-------------- Set up service"
 
 
+/opt/keycloak/bin/kc.sh start-dev
