@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "-------------- Installing microk8s"
+echo "-------------- Installing microk8s application"
 sudo snap install microk8s --classic
 echo "-------------- Installing Docker"
 sudo snap install docker
@@ -25,9 +25,11 @@ newgrp microk8s &
 echo "-------------- Finished microk8s"
 
 echo ""
-echo "--------------................  IMPORTANT  -------------------------------------"
-echo "-- Close the session and log in again in order for microk8s commands to work  --"
-echo "--------------------------------------------------------------------------------"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  IMPORTANT  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "!!                                                                                                !!"
+echo "!! Close the session (exit) and log in again (vagrant ssh) in order for microk8s commands to work !!"
+echo "!!                                                                                                !!"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo ""
 
 
