@@ -14,6 +14,15 @@ Download SourceTree installer [here](https://www.sourcetreeapp.com/) and run it.
 Open SourceTree and clone this repository to a local folder in your PC.
 We will call it the $ROOTFOLDER, e.g. C:\soft\projects\github-repos\example
 
+### Install Sprint Tool Suite
+
+https://jdk.java.net/18/
+
+https://spring.io/tools
+
+cd c:\soft
+jdk-18.0.2.1\bin\java -jar spring-tool-suite-4-4.15.3.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting.jar
+
 ### Install base software
 
 Run the following commands in your PC using Git bash:
