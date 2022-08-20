@@ -51,7 +51,7 @@ Now, you should be able to view the following resources using a browser in your 
 *#VM Port forwarding for NodePorts (does not require kubectl port-forward)*
 * host: 11000, guest: 30777, Purpose: Portainer (HTTP)
 * host: 11001, guest: 21001, Purpose: Keycloak (HTTP)
-* host: 11002, guest: 4200, Purpose: ng serve (HTTP)
+* host: 11002, guest: 4200, Purpose: Frontend: main - ng serve (HTTP)
 
 ### Troubleshooting
 
