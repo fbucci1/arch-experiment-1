@@ -25,17 +25,17 @@ Then, run /home/vagrant/resoruces/update.sh
 ´´´ bash
 cd /home/vagrant/resoruces
 
-~/resources/copyFromVagrant.sh
+~/resources/copyResourcesFromHost.sh
 
-~/resources/copyFromVagrant.sh && ~/resources/update.sh
+~/resources/copyResourcesFromHost.sh && ~/resources/update.sh
 
-~/resources/copyFromVagrant.sh && ~/resources/onSessionStart.sh
+~/resources/copyResourcesFromHost.sh && ~/resources/onSessionStart.sh
 
 SVC=webpack
 
-~/resources/copyFromVagrant.sh && ~/resources/shared/installService.sh $SVC
+~/resources/copyResourcesFromHost.sh && ~/resources/shared/installService.sh $SVC
 
-~/resources/copyFromVagrant.sh && ~/resources/shared/uninstallService.sh $SVC
+~/resources/copyResourcesFromHost.sh && ~/resources/shared/uninstallService.sh $SVC
 
-~/resources/copyFromVagrant.sh && ~/resources/shared/uninstallService.sh $SVC && ~/resources/shared/installService.sh $SVC
+~/resources/copyResourcesFromHost.sh && ~/resources/shared/uninstallService.sh $SVC && ~/resources/shared/installService.sh $SVC
 ´´´
