@@ -1,0 +1,1 @@
+rsync -rav --exclude "node_modules" /vagrant/code/frontend/main /home/vagrant/workspace

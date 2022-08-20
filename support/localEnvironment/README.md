@@ -38,6 +38,7 @@ Now, you should be able to view the following resources using a browser in your 
 * [Grafana](http://localhost:10001)
 * [Portainer](http://localhost:11000)
 * [Keycloak](http://localhost:11001)
+* [ng serve](http://localhost:11002)
 
 ### The VM is configured to forward the following ports:
 
@@ -49,7 +50,8 @@ Now, you should be able to view the following resources using a browser in your 
 * host: 10004, guest: 20004, Purpose: Available
 *#VM Port forwarding for NodePorts (does not require kubectl port-forward)*
 * host: 11000, guest: 30777, Purpose: Portainer (HTTP)
-* host: 11001, guest: 30779, Purpose: Available
+* host: 11001, guest: 21001, Purpose: Keycloak (HTTP)
+* host: 11002, guest: 4200, Purpose: ng serve (HTTP)
 
 ### Troubleshooting
 
