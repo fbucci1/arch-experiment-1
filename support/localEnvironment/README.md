@@ -76,6 +76,6 @@ vagrant ssh
 ```
 
 ## Keycloak
-Sample request for generating a JWT:
+Sample request for generating a JWT form the guest machine:
 
 curl -X POST -d "client_id=myclient" -d "client_secret=000000-000000-000000-000000" -d "grant_type=password" -d "username=testuser" -d "password=1234" http://localhost:21001/realms/demorealm/protocol/openid-connect/token

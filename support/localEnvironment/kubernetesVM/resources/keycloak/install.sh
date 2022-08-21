@@ -35,9 +35,9 @@ cd /opt/keycloak/bin
 REALMNAME=demorealm
 CLIENTSECRET=000000-000000-000000-000000
 REALMID=$(./kcadm.sh create realms -s realm=$REALMNAME -s enabled=true -i)
-CLIENTID=$(./kcadm.sh create clients -r $REALMNAME -s clientId=myclient -s enabled=true -s clientAuthenticatorType=client-secret -s secret=$CLIENTSECRET -s directAccessGrantsEnabled=true -s 'redirectUris=["http://localhost:8088/*"]' -i)
+CLIENTID=$(./kcadm.sh create clients -r $REALMNAME -s clientId=myclient -s enabled=true -s clientAuthenticatorType=client-secret -s secret=$CLIENTSECRET -s directAccessGrantsEnabled=true -s 'redirectUris=["http://localhost:8088/*","http://localhost:8080/*"]' -i)
 #./kcadm.sh get clients/$CLIENTID/installation/providers/keycloak-oidc-keycloak-json
-./kcadm.sh create roles -r $REALMNAME -s name=regularUserRole -s 'description=Regular user with limited set of permissions'
+./kcadm.sh create roles -r $REALMNAME -s name=user -s 'description=Regular user with limited set of permissions'
 ./kcadm.sh create clients/$CLIENTID/roles -r $REALMNAME -s name=editor -s 'description=Editor can edit, and publish any article'
 USERID=$(./kcadm.sh create users -r $REALMNAME -s username=testuser -s enabled=true -i)
 ./kcadm.sh update users/$USERID/reset-password -r $REALMNAME -s type=password -s value=1234 -s temporary=false -n
