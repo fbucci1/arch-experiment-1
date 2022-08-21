@@ -5,3 +5,4 @@
 * Create Frontend using Backend API integrated with Keycloak
 * Integrate with CI/CD using MicroK8s argocd plugin - https://microk8s.io/docs/addons
 * Install MicroK8s ingress plugin - https://microk8s.io/docs/addon-ingress
+* 
