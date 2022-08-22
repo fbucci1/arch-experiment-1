@@ -20,6 +20,12 @@ public class TestController {
 
 	@GetMapping("/api/test")
 	String test() {
-		return "Hi there at " + new Date() ;
+		return "Hi there USER at " + new Date() ;
 	}
+
+	@GetMapping("/api/editor/test")
+	String editorTest() {
+		return "Hi there EDITOR at " + new Date() ;
+	}
+
 }

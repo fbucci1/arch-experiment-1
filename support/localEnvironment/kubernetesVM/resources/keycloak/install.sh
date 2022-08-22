@@ -35,13 +35,15 @@ cd /opt/keycloak/bin
 REALMNAME=demorealm
 CLIENTSECRET=000000-000000-000000-000000
 REALMID=$(./kcadm.sh create realms -s realm=$REALMNAME -s enabled=true -i)
-CLIENTID=$(./kcadm.sh create clients -r $REALMNAME -s clientId=myclient -s enabled=true -s clientAuthenticatorType=client-secret -s secret=$CLIENTSECRET -s directAccessGrantsEnabled=true -s 'redirectUris=["http://localhost:8088/*","http://localhost:8080/*"]' -i)
-#./kcadm.sh get clients/$CLIENTID/installation/providers/keycloak-oidc-keycloak-json
+CLIENTID=$(./kcadm.sh create clients -r $REALMNAME -s clientId=myclient -s enabled=true -s clientAuthenticatorType=client-secret -s secret=$CLIENTSECRET -s directAccessGrantsEnabled=true -s authorizationServicesEnabled=true -s serviceAccountsEnabled=true -s 'redirectUris=["http://localhost:8088/*","http://localhost:8080/*"]' -i)
 ./kcadm.sh create roles -r $REALMNAME -s name=user -s 'description=Regular user with limited set of permissions'
+./kcadm.sh create clients/$CLIENTID/roles -r $REALMNAME -s name=user -s 'description=Regular user'
 ./kcadm.sh create clients/$CLIENTID/roles -r $REALMNAME -s name=editor -s 'description=Editor can edit, and publish any article'
 USERID=$(./kcadm.sh create users -r $REALMNAME -s username=testuser -s enabled=true -i)
 ./kcadm.sh update users/$USERID/reset-password -r $REALMNAME -s type=password -s value=1234 -s temporary=false -n
 ./kcadm.sh add-roles --uusername testuser --rolename user -r $REALMNAME
+##Only client level roles are copied to the JWT
+./kcadm.sh add-roles -r $REALMNAME --uusername testuser --cclientid myclient --rolename user
 ./kcadm.sh add-roles -r $REALMNAME --uusername testuser --cclientid myclient --rolename editor
 echo "-------------- "
 echo "Now, you can get a JWT with the following request: " curl -X POST -d "client_id=myclient" -d "client_secret=$CLIENTSECRET" -d "grant_type=password" -d "username=testuser" -d "password=1234" http://localhost:21001/realms/demorealm/protocol/openid-connect/token
