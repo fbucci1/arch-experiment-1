@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "7b7afd57-c05c-4386-8c43-078cce026c4c",
+		"name": "Experiment Springboot keycloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4938569"
+	},
+	"item": [
+		{
+			"name": "/api/test",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "myclient",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "000000-000000-000000-000000",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "testuser",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:11001/realms/demorealm/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11001",
+					"path": [
+						"realms",
+						"demorealm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/editor/test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/editor/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"editor",
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkb3NzUEZ4QVFSRllkN24tNXNRdkFwSlNKQlRqalc4bGQtdVdUa0g0enJzIn0.eyJleHAiOjE2NjE0NTM3NTUsImlhdCI6MTY2MTQ1MzQ1NSwianRpIjoiYTc3ZDA5N2QtYzdkMy00MGRkLWIyMTYtNDU0MDVjZDRjOTIwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDoxMTAwMS9yZWFsbXMvZGVtb3JlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjJiNDZjZGM3LTZjYzQtNGIzMS1iM2I5LWMzOWEyNDU3YWU4NyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im15Y2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjVkMzg4NTBjLWFjNTQtNDc5MS1iMmYzLTAzNWU5M2I4MmQ2ZCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwiaHR0cDovL2xvY2FsaG9zdDo4MDg4Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtZGVtb3JlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsibXljbGllbnQiOnsicm9sZXMiOlsiZWRpdG9yIiwidXNlciJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiNWQzODg1MGMtYWM1NC00NzkxLWIyZjMtMDM1ZTkzYjgyZDZkIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0dXNlciJ9.cn2d6OQOQFDlfd0mjETwSiXnOJJP7MQZJQ0Ow5CRF_BT1VnM2ut-lmG-iM2wXfhMynvas8z8AKsvDT1ecMcHHCfcarDoeo25DukoOj1xuk8qBNtwOja7kpLq87Bj3cEeFP4_JAuz50TSbvr1KFcB4KcRVOfN46Wggt0BDJmt_p11Gyik5ydp4I0ebvbZfFthb1PNMSJT9lmFzDSFEf6VuMDCculuMEHri3FFO2WqtCgxx3wJV51TCoVQPPjU2CbVSdh7MvFZUZp_J1gIGcpnGbhW0S3Wqa8RfOBrd93Xr92rHk7ZrhLO9dw4rRcNkeoJFUA-HMatM0ZY8cEAKyDZqg",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "1234",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "testuser",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "000000-000000-000000-000000",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "myclient",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "http://localhost:11001/realms/demorealm/protocol/openid-connect/token",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "queryParams",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
