@@ -2,10 +2,11 @@ package com.example.apis.controllers;
 
 import java.security.Principal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
-import org.keycloak.KeycloakPrincipal;
-import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +21,8 @@ public class TestController {
 	@GetMapping("/api/test")
 	String test(Principal principal) {
 		return "Hi there " + principal.getName()
-		+ ". You must have the client role:user, otherwise you woldn't have been able to see this. In fact, your roles are: "
-		+ getRoles(principal) + ". It is " + new Date();
+				+ ". You must have the client role:user, otherwise you woldn't have been able to see this. In fact, your roles are: "
+				+ getRoles(principal) + ". It is " + new Date();
 	}
 
 	@GetMapping("/api/editor/test")
@@ -32,8 +33,12 @@ public class TestController {
 	}
 
 	private Set<String> getRoles(Principal principal) {
-		KeycloakPrincipal<KeycloakSecurityContext> kp = (KeycloakPrincipal<KeycloakSecurityContext>) principal;
-		return kp.getKeycloakSecurityContext().getToken().getResourceAccess("myclient").getRoles();
+		KeycloakAuthenticationToken kp = (KeycloakAuthenticationToken) principal;
+		HashSet<String> hashSet = new HashSet<String>();
+		for (GrantedAuthority a: kp.getAuthorities()) {
+			hashSet.add(a.getAuthority());
+		}
+		return hashSet;
 	}
 
 }
