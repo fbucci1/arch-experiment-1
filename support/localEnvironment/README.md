@@ -7,9 +7,9 @@
 Download Git installer [here](https://gitforwindows.org/) and run it.
    Install using using default settings (change to use Notepad++ for editing files).
 
-### Install SourceTree
+### Install GitHub Desktop
 
-Download SourceTree installer [here](https://www.sourcetreeapp.com/) and run it.
+Download GitHub Desktop installer [here](https://desktop.github.com/) and run it.
 
 Open SourceTree and clone this repository to a local folder in your PC.
 We will call it the $ROOTFOLDER, e.g. C:\soft\projects\github-repos\example
