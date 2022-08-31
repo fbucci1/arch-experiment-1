@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apis-pod
+  labels:
+    app.kubernetes.io/name: proxy
+spec:
+   containers:
+   - name: apis-container01
+     image: 10.152.183.7:5000/apis:latest
+     ports:
+       - containerPort: 8080
+         name: http-web-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apis-service
+spec:
+  selector:
+    app.kubernetes.io/name: proxy
+  ports:
+     - protocol: TCP
+       port: 8088
+       targetPort: http-web-svc
