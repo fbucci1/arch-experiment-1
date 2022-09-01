@@ -20,6 +20,15 @@ echo "-------------- Reloading user"
 newgrp microk8s &
 echo "-------------- Finished microk8s"
 
+echo "Configuring Microk8s to use its repository"
+#REGHOST=$(microk8s kubectl get services registry -n container-registry -o jsonpath="{.spec.clusterIP}")
+#REGPORT=$(microk8s kubectl get services registry -n container-registry -o jsonpath="{.spec.ports[0].port}")
+REGHOST=localhost
+REGPORT=5001
+sudo mkdir -p /var/snap/microk8s/current/args/certs.d/$REGHOST:$REGPORT
+sudo touch /var/snap/microk8s/current/args/certs.d/$REGHOST:$REGPORT/hosts.toml
+printf "server = \"http://$REGHOST:$REGPORT\"\n[host.\"http://$REGHOST:$REGPORT\"]\ncapabilities = [\"pull\", \"resolve\"]\n" | sudo tee /var/snap/microk8s/current/args/certs.d/$REGHOST:$REGPORT/hosts.toml
+
 echo ""
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  IMPORTANT  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo "!!                                                                                                !!"

@@ -7,10 +7,10 @@ metadata:
 spec:
    containers:
    - name: apis-container01
-     image: 10.152.183.7:5000/apis:latest
+     image: localhost:5001/apis:latest
      ports:
        - containerPort: 8080
-         name: http-web-svc
+         name: http-apis-svc
 ---
 apiVersion: v1
 kind: Service
@@ -22,4 +22,4 @@ spec:
   ports:
      - protocol: TCP
        port: 8088
-       targetPort: http-web-svc
+       targetPort: http-apis-svc
